@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
@@ -6,6 +7,18 @@ namespace Repositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly Store214358897Context _store214358897Context;
+
+        public UserRepository(Store214358897Context store214358897Context)
+        {
+            _store214358897Context = store214358897Context;
+        }
+
+        public async Task<IEnumerable<UsersTbl>> GetUsersAsync()
+        {
+            return await _store214358897Context.UsersTbls.ToListAsync();
+        }
+
         private const string filePath = "E:\\מסלול_תשפד\\Web_Api\\MyFirstWebApiSite\\Users";
         public User addUserToDB(User user)
         {
