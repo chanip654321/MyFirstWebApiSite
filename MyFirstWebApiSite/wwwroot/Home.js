@@ -43,9 +43,7 @@ const fetchPwdStrength = async (password) => {
         return result
     }
         //    alert("error ..., please try again")
-        console.log(ex)   
-    
-    }
+
 
 const checkPwdStrength = async () => {
     try {
@@ -93,7 +91,8 @@ async function Register() {
         })
         if (!res.ok) {
             console.log(res)
-           /// alert(res)
+            const errorResponse = await res.json();
+            console.error(errorResponse);
             return
         }
             
