@@ -11,10 +11,18 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 
 builder.Services.AddControllers();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<Store214358897Context>(option => option.UseSqlServer
 ("Server=srv2\\pupils;Database=Store_214358897;Trusted_Connection=True;TrustServerCertificate=True"));
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 
 
