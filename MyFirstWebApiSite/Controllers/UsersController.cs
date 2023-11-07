@@ -66,9 +66,9 @@ namespace MyFirstWebApiSite.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async  Task<ActionResult> Put(int id, [FromBody] UsersTbl userToUpdate)
+        public async  Task<ActionResult> Put( [FromBody] UsersTbl userToUpdate)
         {
-            int result = await _userServices.updateUserDetails(id, userToUpdate);
+            int result = await _userServices.updateUserDetails( userToUpdate);
             if(result==0)
                 return Ok(User);
             if (result == 1)
