@@ -15,6 +15,9 @@ builder.Services.AddScoped<ICategoryServies, CategoryServies>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductServies, ProductServies>();
 
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderServies, OrderServies>();
+
 
 builder.Services.AddControllers();
 

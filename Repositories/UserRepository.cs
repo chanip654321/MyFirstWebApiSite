@@ -20,7 +20,7 @@ namespace Repositories
         //    return await _store214358897Context.UsersTbls.ToListAsync();
         //}
 
-        private const string filePath = "E:\\מסלול_תשפד\\Web_Api\\MyFirstWebApiSite\\Users";
+       
         public  async Task<UsersTbl> addUserToDB(UsersTbl user)
         {
             await _store214358897Context.UsersTbls.AddAsync(user);
@@ -36,12 +36,11 @@ namespace Repositories
         }
 
 // ----לא עובד מצריך בדיקה----
-        public async Task<bool> updateUserDetails( UsersTbl userToUpdate)
+        public async Task updateUserDetails(int id, UsersTbl userToUpdate)
         {
              _store214358897Context.UsersTbls.Update(userToUpdate);
             await _store214358897Context.SaveChangesAsync();
-            return false;
-
+            
 // ----לא עובד מצריך בדיקה----
         }
 
