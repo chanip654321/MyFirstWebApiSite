@@ -1,7 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Entities;
 namespace Entities;
 
 public partial class Store214358897Context : DbContext
