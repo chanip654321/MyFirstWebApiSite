@@ -20,9 +20,9 @@ namespace MyFirstWebApiSite.Controllers
 
         // GET: api/<ProductsController>
         [HttpGet]
-        public async Task<IEnumerable<ProductsTbl>> Get()
+        public async Task<IEnumerable<ProductsTbl>> Get(string? name, int? minPrice, int? maxPrice,[FromBody] int?[] CategoryIds)
         {
-            return await _productServices.GetProductsAsync();
+            return await _productServices.GetProductsAsync(name, minPrice, maxPrice, CategoryIds);
         }
 
         // GET api/<ProductsController>/5

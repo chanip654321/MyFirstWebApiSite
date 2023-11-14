@@ -1,5 +1,5 @@
 ﻿using Entities;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +17,17 @@ namespace Repositories
             _store214358897Context = store214358897Context;
         }
 
-        public async Task<IEnumerable<ProductsTbl>> GetProductsAsync()
+        public async Task<IEnumerable<ProductsTbl>> GetProductsAsync(string? name, int? minPrice, int? maxPrice, int?[] CategoryIds)
         {
-            return await _store214358897Context.ProductsTbls.ToListAsync();
+            var query = _store214358897Context.ProductsTbls.Where(product =>
+            (name == null ? true : product.Description.Contains(name))
+            && ((minPrice == null) ? true : (product.Price >= minPrice))
+            && ((maxPrice == null) ? true : (product.Price <= maxPrice))
+            && ((CategoryIds.Length == 0) ? true : CategoryIds.Contains(product.CategoryId)))
+            .OrderBy(product => product.Price);
+
+            List<ProductsTbl> products = await query.ToListAsinc();
+            return products;
         }
 
         public async Task<IEnumerable<ProductsTbl>> GetProductsByCategoryAsync(int categoryId)

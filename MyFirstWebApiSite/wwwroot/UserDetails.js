@@ -5,13 +5,17 @@ const showUpdateTags = () => {
     updateTags.style.visibility = "initial" 
 }
 
+const goToProducts = () => {
+    window.location.href = "Products.html"
+}
+//ישנה בעי-ה בקובץ הjs יש לטפל על מנת שעדכון פרטים יעבוד.
 async function updateUserDetails() {
     try {
-        const Email = document.getElementById("updateName").value
-        const Password = document.getElementById("updatePassword").value
-        const FirstName = document.getElementById("updateFName").value
-        const LastName = document.getElementById("updateLName").value
-        const user = { Email, Password, FirstName, LastName }
+        const Email = document.getElementById("updateName").value;
+        const Password = document.getElementById("updatePassword").value;
+        const FirstName = document.getElementById("updateFName").value;
+        const LastName = document.getElementById("updateLName").value;
+        const user = { Email, Password, FirstName, LastName };
         let id;
 
         try {
@@ -54,4 +58,6 @@ async function updateUserDetails() {
     catch (er) {
         alert("error...!!, please try again")
     }
+
+
 }

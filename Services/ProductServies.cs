@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Services
 {
@@ -17,9 +18,9 @@ namespace Services
             _productRepository = productRepository;
         }
 
-        public async Task<IEnumerable<ProductsTbl>> GetProductsAsync()
+        public async Task<IEnumerable<ProductsTbl>> GetProductsAsync(string? name, int? minPrice, int? maxPrice, int?[] CategoryIds)
         {
-            return await _productRepository.GetProductsAsync();
+            return await _productRepository.GetProductsAsync(name, minPrice, maxPrice, CategoryIds);
         }
 
         public async Task<IEnumerable<ProductsTbl>> GetProductsByCategoryAsync(int categoryId)
